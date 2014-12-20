@@ -1,0 +1,36 @@
+@import '.meteor/local/build/programs/server/assets/packages/reywood_bootstrap3-sass/bootstrap';
+@import 'stylesheets/modules/modules';
+
+body {
+  background-size: cover;
+
+  &.background-type--dark {
+    color: white;
+    text-shadow: 1px 1px $text-color;
+  }
+}
+
+.form-flat {
+
+  .form-control {
+    background-color: rgba(white, 0.1);
+    text-shadow: 1px 1px $text-color;
+  }
+
+  .btn {
+    @extend .btn.btn-flat;
+  }
+}
+
+.call__info {
+  margin-top: 60px;
+
+  h1 {
+    font-size: 60px;
+    margin-bottom: 28px;
+  }
+}
+
+.call__form {
+  margin-top: 60px + 60px * 1.1 + 28px;
+}

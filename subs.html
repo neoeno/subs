@@ -1,0 +1,74 @@
+<head>
+  <title>subs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+</body>
+
+<template name="CallShow">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 call__info">
+        <h1>{{call.title}}</h1>
+        {{#markdown}}{{call.body}}{{/markdown}}
+      </div>
+      <div class="col-md-6 call__form">
+        <div class="form-flat">
+          {{# autoForm collection="Submissions" type="insert"}}
+            {{> afQuickField name="name" }}
+            {{> afQuickField name="email" }}
+            {{> afQuickField name="body" }}
+            {{> afFieldInput name="callId" value=call._id type="hidden"}}
+            <button type="submit" class="btn btn-flat">Submit</button>
+          {{/autoForm}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="CallIndex">
+  <div class="container">
+    <h1>Calls</h1>
+    <ul>
+      {{#each calls}}
+        <li><a href="/calls/{{_id}}">{{title}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="CallNew">
+  <div class="container"><div class="row"><div class="col-sm-6">
+    <h1>New Call</h1>
+    {{> quickForm collection="Calls" type="insert"}}
+  </div></div></div>
+</template>
+
+<template name="CallEdit">
+  <div class="container"><div class="row"><div class="col-sm-6">
+    <h1>Edit Call "{{call.title}}"</h1>
+    {{> quickForm collection="Calls" doc=call type="update"}}
+  </div></div></div>
+</template>
+
+<template name="CallSubmissionsList">
+  <div class="container"><div class="row"><div class="col-sm-6">
+    <h1>Submissions for "{{call.title}}"</h1>
+    {{#each submissions}}
+      <article>
+        <h2>{{name}}</h2>
+        <p>{{email}}</p>
+        {{#markdown}}{{body}}{{/markdown}}
+      </article>
+    {{/each}}
+  </div></div></div>
+</template>
