@@ -2,7 +2,7 @@
 @import 'stylesheets/modules/modules';
 
 body {
-  background-size: cover;
+  background-repeat: no-repeat;
 
   &.background-type--dark {
     color: white;
@@ -11,12 +11,6 @@ body {
 }
 
 .form-flat {
-
-  .form-control {
-    background-color: rgba(white, 0.1);
-    text-shadow: 1px 1px $text-color;
-  }
-
   .btn {
     @extend .btn.btn-flat;
   }

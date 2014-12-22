@@ -1,4 +1,13 @@
-Calls = new Mongo.Collection("calls");
+Calls = new Mongo.Collection("calls", {
+  transform: function(doc) {
+    doc.slug = function() {
+      return this.title.replace(/[^a-z]+/ig, '-');
+    };
+
+    return doc;
+  }
+});
+
 Calls.attachSchema(new SimpleSchema({
   title: {
     type: String,
@@ -13,10 +22,26 @@ Calls.attachSchema(new SimpleSchema({
       rows: 8
     }
   },
-  backgroundUrl: {
+  backgroundImage: {
     type: String,
-    label: "Background image (URL)",
-    optional: true
+    optional: true,
+    autoform: {
+      afFieldInput: {
+        type: 'fileUpload',
+        collection: 'Attachments'
+      }
+    }
+  },
+  backgroundPosition: {
+    type: String,
+    optional: true,
+    label: "Background position (e.g. bottom left)"
+  },
+  backgroundSize: {
+    type: String,
+    label: "Background size mode",
+    optional: true,
+    allowedValues: ['cover', 'contain']
   },
   backgroundType: {
     type: String,

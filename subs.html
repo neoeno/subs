@@ -22,13 +22,17 @@
       </div>
       <div class="col-md-6 call__form">
         <div class="form-flat">
-          {{# autoForm collection="Submissions" type="insert"}}
-            {{> afQuickField name="name" }}
-            {{> afQuickField name="email" }}
-            {{> afQuickField name="body" }}
-            {{> afFieldInput name="callId" value=call._id type="hidden"}}
-            <button type="submit" class="btn btn-flat">Submit</button>
-          {{/autoForm}}
+          {{# unless submitted }}
+            {{# autoForm collection="Submissions" id="SubmissionInsertForm" type="insert"}}
+              {{> afQuickField name="name" }}
+              {{> afQuickField name="email" }}
+              {{> afQuickField name="body" }}
+              {{> afFieldInput name="callId" value=call._id type="hidden"}}
+              <button type="submit" class="btn btn-flat">Submit</button>
+            {{/autoForm}}
+          {{ else }}
+            <p>Thanks!</p>
+          {{/unless}}
         </div>
       </div>
     </div>
@@ -40,7 +44,7 @@
     <h1>Calls</h1>
     <ul>
       {{#each calls}}
-        <li><a href="/calls/{{_id}}">{{title}}</a></li>
+        <li><a href="/calls/{{_id}}/{{slug}}">{{title}}</a> <sup><a href="/calls/{{_id}}/{{slug}}/edit">(edit)</a></sup></li>
       {{/each}}
     </ul>
   </div>
@@ -49,14 +53,14 @@
 <template name="CallNew">
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>New Call</h1>
-    {{> quickForm collection="Calls" type="insert"}}
+    {{> quickForm collection="Calls" id="CallInsertForm" type="insert"}}
   </div></div></div>
 </template>
 
 <template name="CallEdit">
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>Edit Call "{{call.title}}"</h1>
-    {{> quickForm collection="Calls" doc=call type="update"}}
+    {{> quickForm collection="Calls" doc=call id="CallUpdateForm" type="update"}}
   </div></div></div>
 </template>
 
