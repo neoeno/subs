@@ -1,0 +1,16 @@
+<template name="CallSubmissionsList">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>Submissions for "{{call.title}}"</h1>
+        {{#each submissions}}
+        <article>
+          <h2>{{name}}</h2>
+          <p>{{email}}</p>
+          {{#markdown}}{{body}}{{/markdown}}
+        </article>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
