@@ -18,15 +18,6 @@ Router.route('/calls/:_id/:slug', function() {
   this.render('CallShow', {data: {call: call}});
 });
 
-Router.route('/calls/:_id/:slug/submissions', function() {
-  var call = Calls.findOne({_id: this.params._id});
-  var submissions = Submissions.find({callId: call._id});
-  this.render('CallSubmissionsList', {data: {
-    call: call,
-    submissions: submissions
-  }});
-});
-
 if (Meteor.isClient) {
   AutoForm.addHooks(['CallUpdateForm', 'CallInsertForm'], {
     onSuccess: function(_a, _b, template) {

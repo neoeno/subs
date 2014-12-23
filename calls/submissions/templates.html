@@ -1,4 +1,5 @@
 <template name="CallSubmissionsList">
+  {{> nav}}
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
@@ -12,5 +13,21 @@
         {{/each}}
       </div>
     </div>
+  </div>
+</template>
+
+<template name="CallSubmissionInsertForm">
+  <div class="form-flat">
+    {{# unless submitted }}
+      {{# autoForm collection="Submissions" id="SubmissionInsertForm" type="insert"}}
+        {{> afQuickField name="name" }}
+        {{> afQuickField name="email" }}
+        {{> afQuickField name="body" }}
+        {{> afFieldInput name="callId" value=call._id type="hidden"}}
+        <button type="submit" class="btn btn-flat">Submit</button>
+      {{/autoForm}}
+    {{ else }}
+      <p class="call__thanks">Thanks!</p>
+    {{/unless}}
   </div>
 </template>

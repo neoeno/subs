@@ -6,36 +6,41 @@
         {{#markdown}}{{call.body}}{{/markdown}}
       </div>
       <div class="col-md-6 call__form">
-        <div class="form-flat">
-          {{# unless submitted }}
-            {{# autoForm collection="Submissions" id="SubmissionInsertForm" type="insert"}}
-            {{> afQuickField name="name" }}
-            {{> afQuickField name="email" }}
-            {{> afQuickField name="body" }}
-            {{> afFieldInput name="callId" value=call._id type="hidden"}}
-            <button type="submit" class="btn btn-flat">Submit</button>
-            {{/autoForm}}
-          {{ else }}
-            <p class="call__thanks">Thanks!</p>
-          {{/unless}}
-        </div>
+        {{> CallSubmissionInsertForm }}
       </div>
     </div>
   </div>
 </template>
 
 <template name="CallIndex">
+  {{> nav}}
   <div class="container">
     <h1>Calls</h1>
-    <ul>
-      {{#each calls}}
-      <li><a href="/calls/{{_id}}/{{slug}}">{{title}}</a> <sup><a href="/calls/{{_id}}/{{slug}}/edit">(edit)</a></sup></li>
-      {{/each}}
-    </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>No. submissions</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each calls}}
+          <tr>
+            <td><a href="/calls/{{_id}}/{{slug}}">{{title}}</a></td>
+            <td><a class="btn btn-primary" href="/calls/{{_id}}/{{slug}}/submissions">View {{submissionCount}}</a></td>
+            <td><a class="btn btn-success" href="/calls/{{_id}}/{{slug}}/edit">Edit</a></td>
+            <td></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
 </template>
 
 <template name="CallNew">
+  {{> nav}}
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>New Call</h1>
     {{> quickForm collection="Calls" id="CallInsertForm" type="insert"}}
@@ -43,6 +48,7 @@
 </template>
 
 <template name="CallEdit">
+  {{> nav}}
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>Edit Call "{{call.title}}"</h1>
     {{> quickForm collection="Calls" doc=call id="CallUpdateForm" type="update"}}

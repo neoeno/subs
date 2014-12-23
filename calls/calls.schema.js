@@ -4,6 +4,10 @@ Calls = new Mongo.Collection("calls", {
       return this.title.replace(/[^a-z]+/ig, '-');
     };
 
+    doc.submissionCount = function() {
+      return Submissions.find({callId: this._id}).count();
+    };
+
     return doc;
   }
 });

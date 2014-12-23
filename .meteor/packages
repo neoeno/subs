@@ -16,3 +16,5 @@ chuangbo:marked
 cfs:standard-packages
 cfs:gridfs
 yogiben:autoform-file
+accounts-password
+ian:accounts-ui-bootstrap-3
