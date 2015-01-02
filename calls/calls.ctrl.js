@@ -25,6 +25,15 @@ if (Meteor.isClient) {
     }
   });
 
+  AutoForm.addHooks(['CallInsertForm'], {
+    before: {
+      insert: function(doc, _template) {
+        doc.ownerId = Meteor.userId();
+        return doc;
+      }
+    }
+  });
+
   Template.CallIndex.events({
     "click .js-call-delete": function() {
       if(confirm("Are you sure you want to delete '" + this.title + "'?")) {

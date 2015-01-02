@@ -1,5 +1,17 @@
-Submissions = new Mongo.Collection("submissions");
+Submissions = new Mongo.Collection("submissions", {
+  transform: function(doc) {
+    doc.getCall = function() {
+      return Calls.findOne({_id: doc.callId});
+    };
+
+    return doc;
+  }
+});
+
 Submissions.attachSchema(new SimpleSchema({
+  callId: {
+    type: String
+  },
   name: {
     type: String,
     label: "Name",
@@ -15,8 +27,5 @@ Submissions.attachSchema(new SimpleSchema({
     autoform: {
       rows: 8
     }
-  },
-  callId: {
-    type: String,
   }
 }));

@@ -3,13 +3,22 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <h1>Submissions for "{{call.title}}"</h1>
+        <header>
+          <h1>Submissions for "{{call.title}}"</h1>
+        </header>
+        
         {{#each submissions}}
-        <article>
-          <h2>{{name}}</h2>
-          <p>{{email}}</p>
-          {{#markdown}}{{body}}{{/markdown}}
-        </article>
+          <article class="panel panel-default">
+            <heading class="panel-heading">
+              <h3 class="panel-title">{{name}}</h3>
+            </heading>
+            <section class="panel-body">
+              {{#markdown}}{{body}}{{/markdown}}
+            </section>
+            <footer class="panel-footer">
+              <strong>Email:</strong> {{email}}
+            </footer>
+          </article>
         {{/each}}
       </div>
     </div>

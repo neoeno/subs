@@ -16,3 +16,4 @@ cfs:gridfs
 yogiben:autoform-file
 accounts-password
 ian:accounts-ui-bootstrap-3
+email

@@ -8,11 +8,21 @@ Calls = new Mongo.Collection("calls", {
       return Submissions.find({callId: this._id}).count();
     };
 
+    doc.getOwner = function() {
+      return Meteor.users.findOne({_id: doc.ownerId});
+    };
+
     return doc;
   }
 });
 
 Calls.attachSchema(new SimpleSchema({
+  ownerId: {
+    type: String,
+    autoform: {
+      omit: true
+    }
+  },
   title: {
     type: String,
     label: "Title",
