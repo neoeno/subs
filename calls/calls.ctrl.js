@@ -20,8 +20,16 @@ Router.route('/calls/:_id/:slug', function() {
 
 if (Meteor.isClient) {
   AutoForm.addHooks(['CallUpdateForm', 'CallInsertForm'], {
-    onSuccess: function(_a, _b, template) {
-      Router.go('/calls/' + template.data.doc._id + '/' + template.data.doc.slug());
+    onSuccess: function(_a, id, template) {
+      Router.go('/calls/');
+    }
+  });
+
+  Template.CallIndex.events({
+    "click .js-call-delete": function() {
+      if(confirm("Are you sure you want to delete '" + this.title + "'?")) {
+        Calls.remove(this._id);
+      }
     }
   });
 

@@ -22,7 +22,6 @@
           <th>Name</th>
           <th>No. submissions</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -30,8 +29,10 @@
           <tr>
             <td><a href="/calls/{{_id}}/{{slug}}">{{title}}</a></td>
             <td><a class="btn btn-primary" href="/calls/{{_id}}/{{slug}}/submissions">View {{submissionCount}}</a></td>
-            <td><a class="btn btn-success" href="/calls/{{_id}}/{{slug}}/edit">Edit</a></td>
-            <td></td>
+            <td>
+              <a class="btn btn-success" href="/calls/{{_id}}/{{slug}}/edit">Edit</a>
+              <a class="btn btn-danger js-call-delete">Delete</a>
+            </td>
           </tr>
         {{/each}}
       </tbody>

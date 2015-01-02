@@ -5,7 +5,6 @@ aldeed:collection2@2.3.0
 aldeed:simple-schema@1.1.0
 anti:i18n@0.4.3
 application-configuration@1.0.4
-autopublish@1.0.2
 autoupdate@1.1.4
 base64@1.0.2
 binary-heap@1.0.2
@@ -48,7 +47,6 @@ htmljs@1.0.3
 http@1.0.9
 ian:accounts-ui-bootstrap-3@1.2.5
 id-map@1.0.2
-insecure@1.0.2
 iron:controller@1.0.6
 iron:core@1.0.6
 iron:dynamic-template@1.0.6
