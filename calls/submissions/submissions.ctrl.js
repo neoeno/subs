@@ -11,14 +11,18 @@ Router.route('/calls/:_id/:slug/submissions', function() {
 if (Meteor.isClient) {
   AutoForm.addHooks(['SubmissionInsertForm'], {
     onSuccess: function(_a, submissionId, template) {
-      Session.set('SubmissionSubmitted', true);
+      var callsSubmittedTo = Session.get('CallsSubmittedTo') || [];
+      callsSubmittedTo.push(Submissions.findOne(submissionId).getCall()._id);
+      Session.set('CallsSubmittedTo', callsSubmittedTo);
       Meteor.call('sendSubmissionNotificationEmail', submissionId);
     }
   });
 
-  Template.CallShow.helpers({
-    submitted: function() {
-      return Session.get('SubmissionSubmitted');
+  Template.CallSubmissionInsertForm.helpers({
+    viewerHasSubmittedBefore: function() {
+      if(this.call) {
+        return _(Session.get('CallsSubmittedTo')).contains(this.call._id);
+      }
     }
   });
 }

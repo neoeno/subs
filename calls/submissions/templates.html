@@ -27,7 +27,9 @@
 
 <template name="CallSubmissionInsertForm">
   <div class="form-flat">
-    {{# unless submitted }}
+    {{# if viewerHasSubmittedBefore }}
+      <p class="call__thanks">Thanks!</p>
+    {{ else }}
       {{# autoForm collection="Submissions" id="SubmissionInsertForm" type="insert"}}
         {{> afQuickField name="name" }}
         {{> afQuickField name="email" }}
@@ -35,8 +37,6 @@
         {{> afFieldInput name="callId" value=call._id type="hidden"}}
         <button type="submit" class="btn btn-square">Submit</button>
       {{/autoForm}}
-    {{ else }}
-      <p class="call__thanks">Thanks!</p>
-    {{/unless}}
+    {{/if}}
   </div>
 </template>

@@ -1,4 +1,3 @@
-
 Router.route('/calls', function () {
   this.render('CallIndex', {data: {calls: Calls.find({})}});
 });
@@ -13,12 +12,14 @@ Router.route('/calls/:_id/:slug/edit', function() {
 });
 
 Router.route('/calls/:_id/:slug', function() {
-  var call = Calls.findOne({_id: this.params._id});
-  if(call) {
+  if(this.ready()) {
+    var call = Calls.findOne({_id: this.params._id});
     window.applyBackgroundFromCall(call);
     window.applyMetaForCall(call);
+    this.render('CallShow', {data: {call: call}});
+  } else {
+    this.render('Loading');
   }
-  this.render('CallShow', {data: {call: call}});
 });
 
 if (Meteor.isClient) {
