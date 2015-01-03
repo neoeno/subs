@@ -1,0 +1,15 @@
+<template name="EmojiForm">
+  {{#each afFieldNames}}
+    {{#if $eq this ../emojiField}}
+      <div class="emoji-notice">
+        {{#emoji}}
+        <a href="http://www.emoji-cheat-sheet.com/" target="_blank">:squirrel:</a>
+        {{/emoji}}
+      </div>
+    {{/if}}
+    {{> afQuickField name=this options="auto"}}
+  {{/each}}
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</template>

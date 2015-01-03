@@ -75,6 +75,7 @@ npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
 raix:eventemitter@0.1.1
+raix:handlebar-helpers@0.2.4
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
@@ -82,6 +83,7 @@ reload@1.1.2
 retry@1.0.2
 reywood:bootstrap3-sass@3.3.0_2
 routepolicy@1.0.3
+seriousm:emoji-continued@1.4.0
 service-configuration@1.0.3
 session@1.0.5
 sha@1.0.2

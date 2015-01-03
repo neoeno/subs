@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 call__info">
         <h1>{{call.title}}</h1>
-        {{#markdown}}{{call.body}}{{/markdown}}
+        {{#markdown}}{{#emoji}}{{call.body}}{{/emoji}}{{/markdown}}
       </div>
       <div class="col-md-6 call__form">
         {{> CallSubmissionInsertForm }}
@@ -44,7 +44,9 @@
   {{> nav}}
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>New Call</h1>
-    {{> quickForm collection="Calls" id="CallInsertForm" type="insert"}}
+    {{#autoForm collection="Calls" id="CallInsertForm" type="insert"}}
+      {{> EmojiForm emojiField="body"}}
+    {{/ autoForm}}
   </div></div></div>
 </template>
 
@@ -52,6 +54,8 @@
   {{> nav}}
   <div class="container"><div class="row"><div class="col-sm-6">
     <h1>Edit Call "{{call.title}}"</h1>
-    {{> quickForm collection="Calls" doc=call id="CallUpdateForm" type="update"}}
+    {{#autoForm collection="Calls" doc=call id="CallUpdateForm" type="update"}}
+      {{> EmojiForm emojiField="body"}}
+    {{/ autoForm}}
   </div></div></div>
 </template>

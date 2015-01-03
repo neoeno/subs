@@ -56,10 +56,24 @@ body {
   }
 }
 
+.emoji-notice {
+  position: absolute;
+  right: 30px;
+
+  img {
+    height: 25px;
+  }
+}
+
 // Calls
 
 .call__info {
   margin-top: 60px;
+
+  .emoji {
+    height: 18px * 1.4;
+    vertical-align: top;
+  }
 
   h1 {
     font-size: 60px;
