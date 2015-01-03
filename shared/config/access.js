@@ -46,6 +46,6 @@ if(Meteor.isServer) {
 
 if(Meteor.isClient) {
   Meteor.subscribe('calls');
-  Meteor.subscribe('submissions')
+  Meteor.subscribe('submissions');
   Meteor.subscribe('attachments');
 }

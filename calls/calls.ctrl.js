@@ -11,15 +11,18 @@ Router.route('/calls/:_id/:slug/edit', function() {
   this.render('CallEdit', {data: {call: call}});
 });
 
-Router.route('/calls/:_id/:slug', function() {
-  if(this.ready()) {
-    var call = Calls.findOne({_id: this.params._id});
-    window.applyBackgroundFromCall(call);
-    window.applyMetaForCall(call);
-    this.render('CallShow', {data: {call: call}});
-  } else {
-    this.render('Loading');
-  }
+Router.route('/calls/:_id/:slug', {
+  action: function() {
+    if(this.ready()) {
+      var call = Calls.findOne({_id: this.params._id});
+      window.applyBackgroundFromCall(call);
+      window.applyMetaForCall(call);
+      this.render('CallShow', {data: {call: call}});
+    } else {
+      this.render('Loading');
+    }
+  },
+  fastRender: true
 });
 
 if (Meteor.isClient) {
