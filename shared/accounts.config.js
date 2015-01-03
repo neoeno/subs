@@ -1,2 +1,1 @@
-Accounts.config({
-});
+Accounts.config({});

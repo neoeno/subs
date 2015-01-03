@@ -1,3 +1,87 @@
+@import '.meteor/local/build/programs/server/assets/packages/reywood_bootstrap3-sass/bootstrap';
+@import 'modules/modules';
+
+body {
+  background-repeat: no-repeat;
+
+  &.background-type--dark {
+    color: white;
+    text-shadow: 1px 1px $text-color;
+  }
+
+  @include media('md', 'max-width') {
+    background-image: none !important;
+  }
+}
+
+// Forms
+
+.background-type--light {
+  .form-control {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.background-type--dark {
+  .form-control {
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.btn.btn-square {
+  position: relative;
+  border-radius: 0;
+  border: 1px solid black;
+  background: $c-pastel-gray;
+  box-shadow: 2px 2px black;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 500;
+
+  &:hover {
+    left: 1px;
+    top: 1px;
+    box-shadow: 1px 1px black;
+  }
+
+  &:active {
+    left: 2px;
+    top: 2px;
+    box-shadow: -1px -1px black;
+    outline: 0;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+// Calls
+
+.call__info {
+  margin-top: 60px;
+
+  h1 {
+    font-size: 60px;
+    margin-bottom: 28px;
+  }
+}
+
+.call__form {
+  margin-top: 60px + 60px * 1.1 + 28px;
+}
+
+p.call__thanks {
+  font-size: 48px;
+  text-align: center;
+}
+
+// Misc
+
 .panel-heading {
   display: block;
+}
+
+.navbar li {
+  margin-bottom: 0;
 }

@@ -6,7 +6,7 @@
         <header>
           <h1>Submissions for "{{call.title}}"</h1>
         </header>
-        
+
         {{#each submissions}}
           <article class="panel panel-default">
             <heading class="panel-heading">
@@ -33,7 +33,7 @@
         {{> afQuickField name="email" }}
         {{> afQuickField name="body" }}
         {{> afFieldInput name="callId" value=call._id type="hidden"}}
-        <button type="submit" class="btn btn-flat">Submit</button>
+        <button type="submit" class="btn btn-square">Submit</button>
       {{/autoForm}}
     {{ else }}
       <p class="call__thanks">Thanks!</p>

@@ -33,7 +33,9 @@ if(Meteor.isServer) {
     if(this.userId) {
       var calls = Calls.find({ownerId: this.userId});
       var callIds = calls.map(function(call) { return {callId: call._id}; });
-      return Submissions.find({$or: callIds});
+      if(callIds.length > 0) {
+        return Submissions.find({$or: callIds});
+      }
     }
   })
 
