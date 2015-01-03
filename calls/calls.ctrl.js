@@ -11,13 +11,9 @@ CallsCtrl = {
     this.render('CallEdit', {data: {call: call}});
   },
   show: function() {
-    if(this.ready()) {
-      var call = Calls.findOne({_id: this.params._id});
-      window.applyBackgroundFromCall(call);
-      window.applyMetaForCall(call);
-      this.render('CallShow', {data: {call: call}});
-    } else {
-      this.render('Loading');
-    }
+    var call = Calls.findOne({_id: this.params._id});
+    window.applyBackgroundFromCall(call);
+    window.applyMetaForCall(call);
+    this.render('CallShow', {data: {call: call}});
   }
 };

@@ -1,6 +1,12 @@
+// Clear body tag of our classes and styles on each 'load'
+Router.onBeforeAction(function() {
+  $('body').attr({class: '', style: ''});
+  this.next();
+});
+
 AutoForm.addHooks(['CallUpdateForm', 'CallInsertForm'], {
   onSuccess: function(_a, id, template) {
-    Router.go('/calls/');
+    Router.go('/calls');
   }
 });
 

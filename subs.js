@@ -1,5 +1,9 @@
-// Clear body tag of our classes and styles on each 'load'
-Router.onBeforeAction(function() {
-  $('body').attr({class: '', style: ''});
-  this.next();
+Router.route('/', {
+  action: function() {
+    if(Meteor.userId()) {
+      Router.go('/calls');
+    }else{
+      this.render('Root');
+    }
+  }
 });
