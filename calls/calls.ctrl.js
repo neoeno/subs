@@ -1,5 +1,5 @@
+
 Router.route('/calls', function () {
-  // render the Home template with a custom data context
   this.render('CallIndex', {data: {calls: Calls.find({})}});
 });
 
@@ -14,7 +14,10 @@ Router.route('/calls/:_id/:slug/edit', function() {
 
 Router.route('/calls/:_id/:slug', function() {
   var call = Calls.findOne({_id: this.params._id});
-  window.applyBackgroundFromCall(call);
+  if(call) {
+    window.applyBackgroundFromCall(call);
+    window.applyMetaForCall(call);
+  }
   this.render('CallShow', {data: {call: call}});
 });
 
@@ -51,4 +54,19 @@ if (Meteor.isClient) {
     }
     document.body.classList.add("background-type--" + call.backgroundType);
   };
+
+  window.applyMetaForCall = function(call) {
+    var backgroundImage = Attachments.findOne({_id: call.backgroundImage});
+    SEO.set({
+      title: call.title,
+      meta: {
+        'description': call.body.split('\n')[0]
+      },
+      og: {
+        'title': call.title,
+        'description': call.body.split('\n')[0],
+        'image': backgroundImage ? Meteor.absoluteUrl(backgroundImage.url()) : undefined
+      }
+    });
+  }
 }
