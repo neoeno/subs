@@ -27,7 +27,7 @@
 
 <template name="CallSubmissionInsertForm">
   <div class="form-flat">
-    {{# if viewerHasSubmittedBefore }}
+    {{# if viewerHasSubmitted }}
       <p class="call__thanks">Thanks!</p>
     {{ else }}
       {{# autoForm collection="Submissions" id="SubmissionInsertForm" type="insert"}}

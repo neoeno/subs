@@ -12,6 +12,14 @@ Calls = new Mongo.Collection("calls", {
       return Meteor.users.findOne({_id: doc.ownerId});
     };
 
+    doc.backgroundImageUrl = function() {
+      if(!doc.backgroundImage) return;
+      var subscription = Meteor.subscribe('attachment', doc.backgroundImage);
+      if(subscription.ready()) {
+        return Attachments.findOne({_id: doc.backgroundImage}).url();
+      }
+    };
+
     return doc;
   }
 });
