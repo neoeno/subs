@@ -35,7 +35,9 @@
         {{> afQuickField name="email" }}
         {{> afQuickField name="body" }}
         {{> afFieldInput name="callId" value=call._id type="hidden"}}
-        <button type="submit" class="btn btn-square">Submit</button>
+        <div class="form-group">
+          <button type="submit" class="btn btn-square">Submit</button>
+        </div>
       {{/autoForm}}
     {{/if}}
   </div>

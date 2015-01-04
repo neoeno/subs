@@ -82,7 +82,9 @@ body {
 }
 
 .call__form {
-  margin-top: 60px + 60px * 1.1 + 28px;
+  @include media('md') {
+    margin-top: 60px + 60px * 1.1 + 28px;
+  }
 }
 
 p.call__thanks {
