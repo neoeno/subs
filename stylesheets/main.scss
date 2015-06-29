@@ -54,6 +54,10 @@ body {
   &:focus {
     outline: 0;
   }
+
+  .background-type--dark & {
+    color: #333;
+  }
 }
 
 .emoji-notice {
